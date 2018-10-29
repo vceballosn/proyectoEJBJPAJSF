@@ -1,0 +1,38 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+	<title>Proyecto Destino</title>
+</h:head>
+<h:body>
+	<h:form id="frm">
+		<h:panelGrid columns="2" cellpadding="5">
+			<p:outputLabel value="Nombre" />
+			<p:inputText value="#{destinoController.destino.nombre}" required="true"></p:inputText>
+			<p:outputLabel value="Descripcion" />
+			<p:inputText value="#{destinoController.destino.descripcion}"></p:inputText>
+			<p:outputLabel value="Estatus" />
+			<p:inputText value="#{destinoController.destino.estatus}"></p:inputText>
+			<p:outputLabel></p:outputLabel>
+		</h:panelGrid>
+	<p:dataTable value="#{destinoController.destinos}" var="a">
+		  <p:column headerText="Nombre">
+		     <h:outputText value="#{a.nombre}"/>
+		  </p:column>	
+		  <p:column headerText="Descripcion">
+		    <h:outputText value="#{a.descripcion}"/>
+		  </p:column>
+		  <p:column headerText="Estatus">
+		    <h:outputText value="#{a.estatus}"/>
+		  </p:column>  
+	  </p:dataTable>
+	  <center>	
+	   <p:commandButton value="Save" action="#{destinoController.saveDestino(destinoController.destino)}" update="frm"></p:commandButton>
+	   <p:commandButton value="List" action="#{destinoController.getDestino()}"></p:commandButton>	
+	 </center>		
+	</h:form>
+</h:body>
+</html>
